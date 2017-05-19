@@ -1,0 +1,40 @@
+$min-width: 75%;
+$full-width: 100%;
+$absolute: 'absolute';
+
+.todos-card {
+    width:550px;
+}
+
+.mid-width {
+    width:$min-width;
+}
+
+.full-width {
+    width:$full-width;
+}
+
+.pull-right {
+    position: absolute;
+    right: 0;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+.seperate {
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.last {
+    border-bottom: none;
+}
