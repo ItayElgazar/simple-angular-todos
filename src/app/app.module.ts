@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 import { HeaderComponent } from './header/header.component';
 import { TodosComponent } from './todos/todos.component';
+
 @NgModule({
   declarations: [
     AppComponent,

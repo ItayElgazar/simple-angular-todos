@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ITodo } from './todo.interface';
 
 @Component({
@@ -15,15 +15,17 @@ export class TodosComponent implements OnInit {
   constructor() {
     this.todo = { isChecked: false, todoName: '' };
     this.todosCount = 0;
+    
   }
 
-  deleteTodo(todo) {
+
+  deleteTodo(todo) {    
     this.todos = this.todos.filter(t => todo.todoName !== t.todoName);
     this.todosCount = this.getTodosCount();
   }
 
   addTodo(todoForm) {
-    if (todoForm.invalid) {
+    if (todoForm.invalid || !this.todo.todoName) {
       return;
     }
 
@@ -42,15 +44,6 @@ export class TodosComponent implements OnInit {
     this.todosCount = this.getTodosCount();
   }
 
-
-  onTodoCheck(todo: ITodo) {
-    if (todo.isChecked)
-      return this.unCheckTodo(todo);
-
-    return this.checkTodo(todo);
-
-  }
-
   getTodosCount() {
     return this.todos.filter(t => !t.isChecked).length;
   }
@@ -63,6 +56,8 @@ export class TodosComponent implements OnInit {
     this.todos = [];
     this.todosCount = 0;
   }
+
+
 
   ngOnInit() {
 

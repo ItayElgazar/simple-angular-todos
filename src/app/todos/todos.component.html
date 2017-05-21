@@ -1,11 +1,8 @@
 <md-card class="todos-card">
-
-
-
   <md-input-container class="full-width">
 
     <form (ngSubmit)="addTodo(name)" autocomplete="off">
-      <input [(ngModel)]="todo.todoName" minlength="3" maxlength="20" mdInput placeholder="Whats needs to be done?" dividerColor="accent"
+      <input [(ngModel)]="todo.todoName" minlength="3" maxlength="20" mdInput placeholder="What needs to be done?" dividerColor="accent"
         [ngModelOptions]="{standalone: true}" #name="ngModel">
     </form>
 
@@ -16,7 +13,9 @@
   <md-list>
     <md-list-item *ngFor="let todo of todos;let index=index;" class="seperate" [class.last]="index == todos.length-1">
 
-      <md-checkbox (click)="onTodoCheck(todo)" [class.strike]="todo.isChecked">{{todo.todoName}}</md-checkbox>
+      <md-checkbox *ngIf="!todo.isChecked" (click)="checkTodo(todo)" [class.strike]="todo.isChecked">{{todo.todoName}}</md-checkbox>
+      <md-checkbox *ngIf="todo.isChecked" [checked]="true" (click)="unCheckTodo(todo)" [class.strike]="todo.isChecked">{{todo.todoName}}</md-checkbox>
+      
       <button md-icon-button [md-menu-trigger-for]="menu" class="pull-right">
       <md-icon>more_vert</md-icon>
     </button>
